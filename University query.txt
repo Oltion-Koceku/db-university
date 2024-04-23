@@ -41,3 +41,27 @@ SELECT *
 FROM `teachers` 
 WHERE `phone` IS NULL;
 
+Query con GROUP BY
+
+1.
+SELECT YEAR(enrolment_date) AS Anno_di_iscrizione, COUNT(*) AS Numero_iscritti
+FROM students
+GROUP BY YEAR(enrolment_date);
+
+2.
+SELECT `office_address`, COUNT(*) AS `stesso_edificio`
+FROM `teachers` 
+GROUP BY `office_address`;
+
+3.
+SELECT `exam_id`, AVG(`vote`) AS `media_voti` 
+FROM `exam_student` 
+GROUP BY `exam_id`;
+
+4.
+SELECT `department_id`, COUNT(*) AS `Corsi_di_laurea`
+FROM `degrees` 
+GROUP BY `department_id`;
+
+
+
