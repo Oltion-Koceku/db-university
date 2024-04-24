@@ -63,5 +63,48 @@ SELECT `department_id`, COUNT(*) AS `Corsi_di_laurea`
 FROM `degrees` 
 GROUP BY `department_id`;
 
+Query con JOIN
+
+1.
+
+SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`registration_number`, `degrees`.`name`
+FROM `students`
+INNER JOIN `degrees` ON `degrees`.`id` = `students`.`degree_id`
+WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
+
+2.
+
+SELECT
+    `departments`.`name`,
+    `departments`.`id`,
+    `degrees`.`id`,
+    `degrees`.`name`
+FROM
+    `departments`
+INNER JOIN `degrees` ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name` = 'Dipartimento di
+Neuroscienze'
+AND `degrees`.`name` = 'Corsi di Laurea Magistrale' 
+
+SBAGLIATA
+
+3.
+
+SELECT `courses`.`id`, `courses`.`name`, `teachers`.`id`, `teachers`.`name`
+FROM `courses`
+INNER JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id`
+INNER JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+WHERE `teachers`.`id` = 44;
+
+4. 
+
+SELECT `students`.`id`, `students`.`name` AS `studente`, `students`.`surname`, `degrees`.`name` AS `corso`, `departments`.`name` AS `dipartimento`
+FROM `students` 
+INNER JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+ORDER BY `students`.`surname`
+
+5.
+
 
 
